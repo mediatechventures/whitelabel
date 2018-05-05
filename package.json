@@ -1,0 +1,25 @@
+{
+  "name": "whitelabel",
+  "version": "1.0.0",
+  "description": "Whitelabel.company",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js --build",
+    "dev": "node build.js --dev",
+    "publish": "npm run build && git subtree push --prefix dist origin gh-pages"
+  },
+  "author": "MediaTech Ventures",
+  "license": "MTV",
+  "devDependencies": {
+    "@chassis/core": "^1.2.3",
+    "clean-css": "^4.1.11",
+    "fs-extra": "^6.0.0",
+    "postcss": "^6.0.22",
+    "productionline-web": "^1.0.32",
+    "shortbus": "^1.2.8"
+  },
+  "dependencies": {
+    "productionline": "^1.2.7"
+  }
+}

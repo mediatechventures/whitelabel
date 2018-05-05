@@ -1,0 +1,256 @@
+@chassis init;
+@chassis include all;
+
+.whitelabel {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+
+  margin: 10vh 0 10vh 0;
+
+  & > header {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    margin: 0 10vw;
+
+    & .card {
+      position: relative;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      cursor: pointer;
+      margin: 0 .5vw;
+      transform-style: preserve-3d;
+      transform-origin: center right;
+      transition: transform 1s;
+
+      &.invisible label {
+        opacity: 0;
+      }
+
+      /* border: 1px solid transparent; */
+
+      &.selected {
+        border: 1px solid rgba(0,0,0,.03);
+        transform: translateX(-100%) rotateY(-180deg);
+      }
+
+      & .face {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        pointer-events: none;
+        backface-visibility: hidden;
+        padding: .5vw;
+      }
+
+      &:hover:before {
+        position: absolute;
+        content: 'select to learn more...';
+        top: 4vh;
+        padding: .5vw;
+        width: 100%;
+        opacity: .5;
+        font-size: .75vh;
+      }
+
+      & .face--back {
+        box-shadow: 2px 0 14px rgba(0,0,0,.13);
+        /* border: 1px solid rgba(0,0,0,.1); */
+        background-color: #ffffff;
+        border-radius: 2px;
+        transform: rotateY(180deg);
+      }
+
+      & label {
+        font-size: 2.5vh;
+        opacity: .87;
+        font-weight: 700;
+        text-transform: uppercase;
+        transition: all 1.3s ease;
+      }
+
+      & ul {
+        opacity: .7;
+      }
+
+      &:nth-of-type(2) {
+        text-align: center;
+      }
+
+      &:last-of-type {
+        text-align: right;
+      }
+    }
+  }
+
+  & main {
+    display: flex;
+    flex-direction: column;
+    flex: 1.5;
+    margin: 0 11vw;
+    text-align: right;
+    transition: all 0s ease;
+
+    & h1 {
+      font-size: 4.5vh;
+      margin: 0;
+    }
+
+    & h2 {
+      font-size: 2.5vh;
+      margin: 0;
+    }
+
+    & h3 {
+      font-weight: 100;
+      opacity: .5;
+    }
+
+    & a {
+      color: #444444;
+      text-decoration: none;
+
+      &:hover {
+        color: #3498db;
+      }
+    }
+
+    &:hover a {
+      color: #39bb66;
+    }
+
+    &.invisible {
+      opacity: 0;
+    }
+
+    & .email {
+      position: relative;
+      margin: 3vh 0 0 0;
+
+      &.invalid:not(.complete):not(.processing):before {
+        position: absolute;
+        font-size: smaller;
+        top: -2vh;
+        color: maroon;
+        content: 'Invalid or incomplete email address. Check the address and try again.';
+      }
+
+      &.processing {
+        &:not(.complete):before {
+          position: absolute;
+          font-size: smaller;
+          top: -2vh;
+          content: 'Registering...';
+        }
+
+        & > * {
+          pointer-events: none;
+          opacity: .5;
+        }
+      }
+
+      &.complete {
+        &:before {
+          position: absolute;
+          font-size: 2vh;
+          text-align: right;
+          right: 0;
+          content: 'Your email has been registered!';
+        }
+
+        & > * {
+          pointer-events: none;
+          opacity: 0;
+          transition: opacity .3s ease;
+        }
+      }
+
+      & ::placeholder {
+        color: rgba(0,0,0,.19);
+      }
+
+      & input {
+        width: 30vw;
+        box-shadow: 0 0 1px rgba(0,0,0,.59) !important;
+        box-shadow: 0 0 0;
+        border-radius: 2px;
+      }
+
+      & button {
+        background-color: #39bb66;
+        color: #fff;
+        font-weight: 600;
+        text-transform: uppercase;
+        opacity: .8;
+        border-radius: 2px;
+
+        &:hover {
+          opacity: 1;
+          transition: opacity .3s ease;
+        }
+      }
+    }
+  }
+
+  & > footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    max-height: 10vh;
+    min-height: 25px;
+    font-size: 2vh;
+    color: rgba(255,255,255,.9);
+    opacity: .85;
+    background: radial-gradient(ellipse at left top, #333333 38.2%, #111111 100%);
+    transition: all 0s ease;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    & > header {
+      flex-direction: column !important;
+
+      & .card {
+        flex-direction: column !important;
+        text-align: right !important;
+        justify-content: flex-end;
+        align-items: flex-end;
+        margin-bottom: 5vh !important;
+        border: 1px transparent !important;
+        opacity: 1;
+        transition: opacity 3s ease;
+
+        & .face--back {
+          display: flex;
+          flex-direction: column !important;
+          padding-top: 4vh;
+          padding-bottom: 10vh;
+          box-shadow: 0 0 0 !important;
+        }
+
+        & label {
+          width: 100%;
+        }
+
+        & ul, & ul li {
+          display: inline;
+          list-style: none;
+          font-size: 90%;
+        }
+
+        & ul li:not(:last-of-type):after {
+          content: ', ';
+        }
+      }
+    }
+
+    & main {
+      padding-top: 6vh;
+    }
+  }
+}

@@ -1,0 +1,206 @@
+@chassis init;
+@chassis include all;
+
+.whitelabel {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  padding-top: 5vh;
+  font-size: 1.1vh;
+  font-weight: 100;
+  color: rgba(0,0,0,.8);
+
+  & h1 {
+    font-size: 3.5vh;
+    text-align: center;
+    /* text-transform: lowercase; */
+  }
+
+  & h2 {
+    font-size: 1.5vh;
+  }
+
+  & h3 {
+    font-weight: 100;
+    opacity: .5;
+  }
+
+  & a {
+    color: #444444;
+    text-decoration: none;
+
+    &:hover {
+      color: #3498db;
+    }
+  }
+
+  & b {
+    font-weight: 600;
+  }
+
+  & blockquote {
+    border-left: .3vh solid rgba(0,0,0,.08);
+    padding: .5vh;
+    font-size: 2vh;
+    font-style: italic;
+    color: rgba(0,0,0,.25);
+    font-weight: 700;
+  }
+
+  & .numbered div {
+    counter-increment: label;
+
+    & label {
+      font-weight: 600;
+      color: rgba(0,0,0,.8);
+
+      &:before {
+        content: counter(label) '.\00a0';
+      }
+    }
+
+    & p {
+      margin: 1.5vh 0;
+    }
+  }
+
+  &:hover a {
+    color: #2980b9;
+  }
+
+  &.invisible {
+    opacity: 0;
+  }
+
+  & .email {
+    position: relative;
+    margin: 3vh 0;
+
+    &.invalid:not(.complete):not(.processing):before {
+      right: 1vw;
+      position: absolute;
+      font-size: smaller;
+      top: -2vh;
+      color: maroon;
+      content: 'Invalid or incomplete email address. Check the address and try again.';
+    }
+
+    &.processing {
+      &:not(.complete):before {
+        right: 1vw;
+        position: absolute;
+        font-size: smaller;
+        top: -2vh;
+        content: 'Registering...';
+      }
+
+      & > * {
+        pointer-events: none;
+        opacity: .5;
+      }
+    }
+
+    &.complete {
+      &:before {
+        right: 1vw;
+        position: absolute;
+        font-size: 2vh;
+        text-align: right;
+        right: 0;
+        content: 'Your email has been registered!';
+      }
+
+      & > * {
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity .3s ease;
+      }
+    }
+
+    & ::placeholder {
+      color: rgba(0,0,0,.19);
+    }
+
+    & input {
+      width: 80%;
+      box-shadow: 0 0 1px rgba(0,0,0,.59) !important;
+      box-shadow: 0 0 0;
+      border-radius: 2px;
+    }
+
+    & button {
+      background-color: #39bb66;
+      color: #fff;
+      font-weight: 600;
+      text-transform: uppercase;
+      opacity: .8;
+      border-radius: 2px;
+      width: 17%;
+      margin-bottom: 5px;
+
+      &:hover {
+        opacity: 1;
+        transition: opacity .3s ease;
+      }
+    }
+  }
+
+  & > footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    max-height: 10vh;
+    min-height: 25px;
+    font-size: 2vh;
+    color: rgba(255,255,255,.9);
+    opacity: .85;
+    background: radial-gradient(ellipse at left top, #333333 38.2%, #111111 100%);
+    transition: all 0s ease;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    & > header {
+      flex-direction: column !important;
+
+      & .card {
+        flex-direction: column !important;
+        text-align: right !important;
+        justify-content: flex-end;
+        align-items: flex-end;
+        margin-bottom: 5vh !important;
+        border: 1px transparent !important;
+        opacity: 1;
+        transition: opacity 3s ease;
+
+        & .face--back {
+          display: flex;
+          flex-direction: column !important;
+          padding-top: 4vh;
+          padding-bottom: 10vh;
+          box-shadow: 0 0 0 !important;
+        }
+
+        & label {
+          width: 100%;
+        }
+
+        & ul, & ul li {
+          display: inline;
+          list-style: none;
+          font-size: 90%;
+        }
+
+        & ul li:not(:last-of-type):after {
+          content: ', ';
+        }
+      }
+    }
+
+    & main {
+      padding-top: 6vh;
+    }
+  }
+}

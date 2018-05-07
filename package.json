@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node build.js --build",
     "dev": "node build.js --dev",
-    "publish": "npm run build && git subtree push --prefix dist origin gh-pages"
+    "publish": "git subtree push --prefix dist origin gh-pages"
   },
   "author": "MediaTech Ventures",
   "license": "MTV",

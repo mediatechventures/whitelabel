@@ -16,10 +16,10 @@
     "clean-css": "^4.1.11",
     "fs-extra": "^6.0.0",
     "postcss": "^6.0.22",
-    "productionline-web": "^1.0.32",
+    "productionline-web": "^1.1.2",
     "shortbus": "^1.2.8"
   },
   "dependencies": {
-    "productionline": "^1.2.7"
+    "productionline": "^1.2.9"
   }
 }

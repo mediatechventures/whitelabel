@@ -34,6 +34,10 @@
     }
   }
 
+  & p {
+    font-size: 1.5vh;
+  }
+
   & b {
     font-weight: 600;
   }
@@ -151,7 +155,8 @@
     align-items: center;
     flex: 1;
     max-height: 10vh;
-    min-height: 25px;
+    height: 10vh;
+    min-height: 10vh;
     font-size: 2vh;
     color: rgba(255,255,255,.9);
     opacity: .85;

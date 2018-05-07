@@ -11,6 +11,8 @@ const CleanCss = require('clean-css')
 class Builder extends ProductionLine {
   constructor (cfg) {
     cfg.assets = [path.resolve('./src/assets')]
+    cfg.output = path.resolve('./docs')
+
     super(cfg)
 
     this.chassis = Postcss([
